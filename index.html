@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERIA – La red social de humanos reales</title>
+  <title>VERIA – La red social de humanos reales</title>
 
   <!-- World ID -->
   <script src="https://cdn.jsdelivr.net/npm/idkit@0.3.3/dist/index.umd.min.js"></script>
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* —— Estilos generales —— */
+    /* —— Estilos generales —— */
     body{
       margin:0;
       font-family:'Inter',sans-serif;
@@ -30,20 +30,13 @@
       font-weight:bold;
       letter-spacing:1px;
     }
-    .admin-message{
-      background:#f50057;
-      padding:.75rem 1rem;
-      text-align:center;
-      font-weight:bold;
-      font-size:1rem;
-    }
 
-    /* —— Verificación —— */
+    /* —— Verificación —— */
     #world-id-button{
       margin:1rem auto;
     }
 
-    /* —— Nuevo post —— */
+    /* —— Nuevo post —— */
     .new-post-container{
       display:none;          /* se muestra tras verificar */
       flex-direction:column;
@@ -70,7 +63,7 @@
       color:#000;
     }
 
-    /* —— Feed —— */
+    /* —— Feed —— */
     #feed{
       flex:1;
       overflow-y:auto;
@@ -91,11 +84,6 @@
 
   <header>VERIA</header>
 
-  <!-- Mensaje fijo del administrador -->
-  <div class="admin-message">
-    🧠 Mensaje del creador: Aquí no hay bots. Solo humanos reales. ¡Publica lo que vibra contigo!
-  </div>
-
   <!-- Botón World ID -->
   <div id="world-id-button"></div>
 
@@ -109,21 +97,21 @@
   <div id="feed">
     <!-- Ejemplos iniciales -->
     <div class="post">
-      <div class="post-author">👤 ana_madrid</div>
+      <div class="post-author">👤 ana_madrid</div>
       <div class="post-content">Hoy me he unido a VERIA. ¡Solo humanos aquí, me flipa!</div>
-      <div class="post-actions">🔥 12 &nbsp; 💬 3</div>
+      <div class="post-actions">🔥 12&nbsp;💬 3</div>
     </div>
     <div class="post">
-      <div class="post-author">👤 leo_mx</div>
+      <div class="post-author">👤 leo_mx</div>
       <div class="post-content">¿Alguien de México por aquí? ¡Me mola esta vibra!</div>
-      <div class="post-actions">🔥 7 &nbsp; 💬 2</div>
+      <div class="post-actions">🔥 7&nbsp;💬 2</div>
     </div>
   </div>
 
   <script>
-    /* —— Montar World ID —— */
+    /* —— Montar World ID —— */
     IDKit.mount({
-      app_id: "app_e316619d0bdf8df1ff6ff6a82eb34f65", // ⬅️ REEMPLÁZALO POR TU APP ID
+      app_id: "app_e316619d0bdf8df1ff6ff6a82eb34f65", // ⬅️ REEMPLÁZALO POR TU APP ID
       action: "veria",
       signal: "post_feed",
       container: "#world-id-button",
@@ -133,7 +121,7 @@
       }
     });
 
-    /* —— Publicar mensajes en frontend —— */
+    /* —— Publicar mensajes en frontend —— */
     const feed   = document.getElementById("feed");
     const input  = document.getElementById("new-post");
     const button = document.getElementById("publish-btn");
@@ -142,13 +130,12 @@
       const text = input.value.trim();
       if (!text) return;
 
-      // Crear post
       const post     = document.createElement("div");
       post.className = "post";
 
       const author   = document.createElement("div");
       author.className = "post-author";
-      author.textContent = "👤 tú";
+      author.textContent = "👤 tú";
 
       const content  = document.createElement("div");
       content.className = "post-content";
@@ -156,10 +143,10 @@
 
       const actions  = document.createElement("div");
       actions.className = "post-actions";
-      actions.innerHTML = "🔥 0 &nbsp; 💬 0";
+      actions.innerHTML = "🔥 0&nbsp;💬 0";
 
       post.append(author, content, actions);
-      feed.prepend(post);          // Añadir arriba
+      feed.prepend(post);
 
       input.value = "";
     };
