@@ -3,154 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERIA - La red social de humanos reales</title>
+  <title>VERIA – La red social de humanos reales</title>
+
+  <!-- World ID -->
   <script src="https://cdn.jsdelivr.net/npm/idkit@0.3.3/dist/index.umd.min.js"></script>
+
+  <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #101820, #1D1F33);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
+    /* —— Estilos generales —— */
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(135deg,#101820,#1D1F33);
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      height:100vh;
     }
-    header {
-      padding: 1rem;
-      background: #222;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      letter-spacing: 1px;
+    header{
+      padding:1rem;
+      background:#222;
+      text-align:center;
+      font-size:1.7rem;
+      font-weight:bold;
+      letter-spacing:1px;
     }
-    .admin-message {
-      background-color: #f50057;
-      color: white;
-      padding: 0.75rem;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1rem;
+    .admin-message{
+      background:#f50057;
+      padding:.75rem 1rem;
+      text-align:center;
+      font-weight:bold;
+      font-size:1rem;
     }
-    #world-id-button {
-      margin: 1rem auto;
-      display: block;
+
+    /* —— Verificación —— */
+    #world-id-button{
+      margin:1rem auto;
     }
-    #feed {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
+
+    /* —— Nuevo post —— */
+    .new-post-container{
+      display:none;          /* se muestra tras verificar */
+      flex-direction:column;
+      padding:1rem;
+      background:#121212;
     }
-    .post {
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
+    #new-post{
+      resize:none;
+      padding:.5rem;
+      border-radius:6px;
+      border:none;
+      font-size:1rem;
+      margin-bottom:.5rem;
+      color:#000;
     }
-    .post-author {
-      font-weight: bold;
-      margin-bottom: 0.3rem;
+    #publish-btn{
+      align-self:flex-end;
+      padding:.5rem 1rem;
+      background:#00e676;
+      border:none;
+      border-radius:6px;
+      font-weight:bold;
+      cursor:pointer;
+      color:#000;
     }
-    .post-content {
-      margin-bottom: 0.5rem;
+
+    /* —— Feed —— */
+    #feed{
+      flex:1;
+      overflow-y:auto;
+      padding:1rem;
     }
-    .post-actions {
-      font-size: 0.9rem;
-      color: #ccc;
+    .post{
+      background:rgba(255,255,255,.08);
+      border-radius:10px;
+      padding:.75rem;
+      margin-bottom:1rem;
     }
-    .new-post-container {
-      padding: 1rem;
-      background: #121212;
-      display: none;
-      flex-direction: column;
-    }
-    #new-post {
-      resize: none;
-      padding: 0.5rem;
-      border-radius: 6px;
-      border: none;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    #publish-btn {
-      align-self: flex-end;
-      padding: 0.5rem 1rem;
-      background: #00e676;
-      border: none;
-      border-radius: 6px;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    .post-author{font-weight:bold;margin-bottom:.3rem;}
+    .post-content{margin-bottom:.5rem;}
+    .post-actions{font-size:.9rem;color:#ccc;}
   </style>
 </head>
 <body>
+
   <header>VERIA</header>
 
+  <!-- Mensaje fijo del administrador -->
   <div class="admin-message">
-    🧠 Mensaje del creador: Aquí no hay bots. Solo humanos reales. Publica lo que vibra contigo.
+    🧠 Mensaje del creador: Aquí no hay bots. Solo humanos reales. ¡Publica lo que vibra contigo!
   </div>
 
+  <!-- Botón World ID -->
   <div id="world-id-button"></div>
 
+  <!-- Formulario para publicar -->
   <div class="new-post-container">
-    <textarea id="new-post" rows="3" placeholder="¿Qué estás pensando, humano?..." maxlength="300"></textarea>
+    <textarea id="new-post" rows="3" maxlength="300" placeholder="¿Qué estás pensando, humano?..."></textarea>
     <button id="publish-btn">Publicar</button>
   </div>
 
+  <!-- Feed -->
   <div id="feed">
+    <!-- Ejemplos iniciales -->
     <div class="post">
-      <div class="post-author">👤 ana_madrid</div>
+      <div class="post-author">👤 ana_madrid</div>
       <div class="post-content">Hoy me he unido a VERIA. ¡Solo humanos aquí, me flipa!</div>
-      <div class="post-actions">🔥 12 &nbsp; 💬 3</div>
+      <div class="post-actions">🔥 12 &nbsp; 💬 3</div>
     </div>
     <div class="post">
-      <div class="post-author">👤 leo_mx</div>
+      <div class="post-author">👤 leo_mx</div>
       <div class="post-content">¿Alguien de México por aquí? ¡Me mola esta vibra!</div>
-      <div class="post-actions">🔥 7 &nbsp; 💬 2</div>
+      <div class="post-actions">🔥 7 &nbsp; 💬 2</div>
     </div>
   </div>
 
   <script>
+    /* —— Montar World ID —— */
     IDKit.mount({
-      app_id: "app_e316619d0bdf8df1ff6ff6a82eb34f65",
+      app_id: "app_e316619d0bdf8df1ff6ff6a82eb34f65", // ⬅️ REEMPLÁZALO POR TU APP ID
       action: "veria",
       signal: "post_feed",
       container: "#world-id-button",
-      onSuccess: (result) => {
-        console.log("Verificado con World ID:", result);
-        document.getElementById('world-id-button').style.display = 'none';
-        document.querySelector('.new-post-container').style.display = 'flex';
+      onSuccess: () => {
+        document.getElementById("world-id-button").style.display = "none";
+        document.querySelector(".new-post-container").style.display = "flex";
       }
     });
 
-    document.getElementById('publish-btn').onclick = () => {
-      const text = document.getElementById('new-post').value.trim();
+    /* —— Publicar mensajes en frontend —— */
+    const feed   = document.getElementById("feed");
+    const input  = document.getElementById("new-post");
+    const button = document.getElementById("publish-btn");
+
+    button.onclick = () => {
+      const text = input.value.trim();
       if (!text) return;
 
-      const post = document.createElement('div');
-      post.className = 'post';
+      // Crear post
+      const post     = document.createElement("div");
+      post.className = "post";
 
-      const author = document.createElement('div');
-      author.className = 'post-author';
-      author.innerText = '👤 tú';
+      const author   = document.createElement("div");
+      author.className = "post-author";
+      author.textContent = "👤 tú";
 
-      const content = document.createElement('div');
-      content.className = 'post-content';
-      content.innerText = text;
+      const content  = document.createElement("div");
+      content.className = "post-content";
+      content.textContent = text;
 
-      const actions = document.createElement('div');
-      actions.className = 'post-actions';
-      actions.innerHTML = '🔥 0 &nbsp; 💬 0';
+      const actions  = document.createElement("div");
+      actions.className = "post-actions";
+      actions.innerHTML = "🔥 0 &nbsp; 💬 0";
 
-      post.appendChild(author);
-      post.appendChild(content);
-      post.appendChild(actions);
+      post.append(author, content, actions);
+      feed.prepend(post);          // Añadir arriba
 
-      const feed = document.getElementById('feed');
-      feed.insertBefore(post, feed.firstChild);
-
-      document.getElementById('new-post').value = '';
+      input.value = "";
     };
   </script>
 </body>
